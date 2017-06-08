@@ -85,7 +85,7 @@
         });
         var msLayer = new ol.layer.Image({
         	source: new ol.source.ImageWMS({
-        		url: "http://localhost:8080/cgi-bin/mapserv.exe?map=D:/xZeroxSugarx/x/Private/xampp/htdocs/gis/assets/mapfile/PekanbaruKampar.map&mode=map", 
+        		url: "http://localhost:8080/cgi-bin/mapserv.exe?map=D:mapfile/PekanbaruKampar.map&mode=map", 
         		serverType: "mapserver", 
         		params: {
         			LAYERS: "kabupaten", 

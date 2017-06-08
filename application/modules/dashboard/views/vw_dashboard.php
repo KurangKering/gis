@@ -9,11 +9,15 @@
 	<!-- Propeller admin theme css-->
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url('template/') ?>themes/css/propeller-admin.css">
  <style>
-  .ol-popup {
-
-    min-width: 600px;
-  }
-
+ .ol-popup {
+  min-width: 600px;
+}
+.popup {
+  min-width: 600px;
+}
+.popover {
+  max-width: 600px;
+}
 </style>
 </head>
 <body>
@@ -56,7 +60,7 @@
 <?php $this->load->view('components/footer'); ?>
 <script src="<?php echo base_url('assets/plugins/'); ?>openlayers/ol-debug.js"></script>
 <script>
-	var baseUrl ='<?php echo base_url(); ?>';
+var baseUrl ='<?php echo base_url(); ?>';
         // Declare a Tile layer with an OSM source
         var osmLayer = new ol.layer.Tile({
         	source: new ol.source.OSM()
@@ -143,19 +147,24 @@
           			return feature;
           		});
           	if (feature) {
+
           		var coordinates = feature.getGeometry().getCoordinates();
           		popup.setPosition(coordinates);
           		$(element).attr( 'data-placement', 'top' );
           		$(element).attr( 'data-original-title', feature.get('nama') );
           		
           		$(element).attr( 'data-content', 
-
-
+                '<div class="row">' +
+                '<div class="col-md-6">' +
                 '<strong>Alamat</strong> : ' + '<br/>' + feature.get('alamat') + '<br/>' +
                 '<strong>Jadwal</strong> : ' + '<br/>' +  feature.get('jadwal') + '<br/>' +
                 '<strong>Kontak</strong> : ' + '<br/>' +  feature.get('kontak') + '<br/>' +
                 '<strong>Koordinat</strong> : ' + '<br/>' +  feature.get('lat') + ' , ' + feature.get('long') + '<br/>' +
-                '<strong>Photo</strong> : ' + '<br/>' +  '<img style="width:100%" src='+feature.get('photo')+'>'+'<br/>' 
+                '</div>' +
+                '<div class="col-md-6">' +
+                '<strong>Photo</strong> : ' + '<br/>' +  '<img style="width:100%" src='+feature.get('photo')+'>'+'<br/>' +
+                '</div>'+
+                '</div>'
                 );
           		
           		$(element).attr( 'data-html', true );

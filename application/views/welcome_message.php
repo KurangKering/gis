@@ -10,12 +10,16 @@
 	<!-- Propeller admin theme css-->
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url('template/') ?>themes/css/propeller-admin.css">
 	<style>
-		.ol-popup {
-
-			min-width: 600px;
-		}
-
-	</style>
+	.ol-popup {
+    min-width: 600px;
+  }
+  .popup {
+    min-width: 600px;
+  }
+  .popover {
+    max-width: 600px;
+  }
+</style>
 </head>
 <body>
 	<div id="headerr"></div>
@@ -31,43 +35,43 @@
 				
 				
 			</div> <!-- End notifications -->
-		<div class="navbar-header ">
+      <div class="navbar-header ">
 
-			<a href="javascript:void(0);" class="navbar-brand ">Sistem Informasi Geografis Dokter Gigi Pekanbaru</a>
+       <a href="javascript:void(0);" class="navbar-brand ">Sistem Informasi Geografis Dokter Gigi Pekanbaru</a>
 
-		</div>
-	</div>
-</nav>
-!--End Nav bar -->
-<!-- Header Ends -->
-<!-- Sidebar Starts -->
-<!-- Left sidebar -->
+     </div>
+   </div>
+ </nav>
+ !--End Nav bar -->
+ <!-- Header Ends -->
+ <!-- Sidebar Starts -->
+ <!-- Left sidebar -->
 
-<!--content area start-->
-<div id="content" class="">
-
-
-	<!--tab start-->
-	<div class="container-fluid full-width-container ">
+ <!--content area start-->
+ <div id="content" class="">
 
 
+   <!--tab start-->
+   <div class="container-fluid full-width-container ">
 
-		<section class="row component-section">
-			<!-- table card code and example -->
-			<div class="col-md-12">
-				<div class="component-box">
-					<!-- table card example -->
-					<div  class="pmd-card pmd-z-depth pmd-card-custom-view">
 
-						<div id="map" class="map"></div>
-						<div id="popup" class="ol-popup">
-						</div>
-					</div>
 
-				</div> <!-- table card example end -->
-			</div>
-		</div> <!-- table card code and example end -->
-	</section>
+    <section class="row component-section">
+     <!-- table card code and example -->
+     <div class="col-md-12">
+      <div class="component-box">
+       <!-- table card example -->
+       <div  class="pmd-card pmd-z-depth pmd-card-custom-view">
+
+        <div id="map" class="map"></div>
+        <div id="popup" class="ol-popup">
+        </div>
+      </div>
+
+    </div> <!-- table card example end -->
+  </div>
+</div> <!-- table card code and example end -->
+</section>
 </div><!-- tab end -->
 
 
@@ -78,7 +82,7 @@
 <?php $this->load->view('components/footer'); ?>
 <script src="<?php echo base_url('assets/plugins/'); ?>openlayers/ol-debug.js"></script>
 <script>
-	var baseUrl ='<?php echo base_url(); ?>';
+var baseUrl ='<?php echo base_url(); ?>';
         // Declare a Tile layer with an OSM source
         var osmLayer = new ol.layer.Tile({
         	source: new ol.source.OSM()
@@ -170,18 +174,22 @@
           		$(element).attr( 'data-placement', 'top' );
           		$(element).attr( 'data-original-title', feature.get('nama') );
           		
-          		$(element).attr( 'data-content', 
-
-
-          			'<strong>Alamat</strong> : ' + '<br/>' + feature.get('alamat') + '<br/>' +
-          			'<strong>Jadwal</strong> : ' + '<br/>' +  feature.get('jadwal') + '<br/>' +
-          			'<strong>Kontak</strong> : ' + '<br/>' +  feature.get('kontak') + '<br/>' +
-          			'<strong>Koordinat</strong> : ' + '<br/>' +  feature.get('lat') + ' , ' + feature.get('long') + '<br/>' +
-          			'<strong>Photo</strong> : ' + '<br/>' +  '<img style="width:100%" src='+feature.get('photo')+'>'+'<br/>' 
-          			);
-          		
-          		$(element).attr( 'data-html', true );
-          		$(element).popover('show');
+              $(element).attr( 'data-content', 
+                '<div class="row">' +
+                '<div class="col-md-6">' +
+                '<strong>Alamat</strong> : ' + '<br/>' + feature.get('alamat') + '<br/>' +
+                '<strong>Jadwal</strong> : ' + '<br/>' +  feature.get('jadwal') + '<br/>' +
+                '<strong>Kontak</strong> : ' + '<br/>' +  feature.get('kontak') + '<br/>' +
+                '<strong>Koordinat</strong> : ' + '<br/>' +  feature.get('lat') + ' , ' + feature.get('long') + '<br/>' +
+                '</div>' +
+                '<div class="col-md-6">' +
+                '<strong>Photo</strong> : ' + '<br/>' +  '<img style="width:100%" src='+feature.get('photo')+'>'+'<br/>' +
+                '</div>'+
+                '</div>'
+                );
+              
+              $(element).attr( 'data-html', true );
+              $(element).popover('show');
 
           		// $(element).popover({
           		// 	'placement': 'top',
@@ -205,7 +213,7 @@
           //   	// var hit = map.hasFeatureAtPixel(pixel);
           //   //map.getTarget().style.cursor = hit ? 'pointer' : '';
           // });
-      </script>
-      <!-- Scripts Ends -->
-  </body>
-  </html>
+        </script>
+        <!-- Scripts Ends -->
+      </body>
+      </html>
